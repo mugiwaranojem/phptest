@@ -1,9 +1,11 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Entity;
 
-interface EntityInterface {
+interface EntityInterface
+{
     public function getTableName(): string;
     public function getId(): int;
 }

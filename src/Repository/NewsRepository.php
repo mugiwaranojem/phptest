@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Repository;
@@ -25,55 +26,55 @@ class NewsRepository
      * Adding property types on parameter
      * Implement mysql injection blocker
      */
-	public function addNews(string $title, string $body): int
-	{
+    public function addNews(string $title, string $body): int
+    {
         $attributes = [
             'title' => $title,
             'body' => $body,
         ];
 
         return $this->db->insert(new News(), $attributes);
-	}
+    }
 
     /**
-	* list all news
-	*/
-	public function listNews(): array
-	{
-		$rows = $this->db->select('SELECT * FROM `news`');
+    * list all news
+    */
+    public function listNews(): array
+    {
+        $rows = $this->db->select('SELECT * FROM `news`');
 
-		$news = [];
-		foreach($rows as $row) {
-			$n = new News();
-			$news[] = $n->setId(intval($row['id']))
-			  ->setTitle($row['title'])
-			  ->setBody($row['body'])
-			  ->setCreatedAt($row['created_at']);
-		}
+        $news = [];
+        foreach($rows as $row) {
+            $n = new News();
+            $news[] = $n->setId(intval($row['id']))
+              ->setTitle($row['title'])
+              ->setBody($row['body'])
+              ->setCreatedAt($row['created_at']);
+        }
 
-		return $news;
-	}
+        return $news;
+    }
 
     /**
-	* deletes a news, and also linked comments
-	*/
-	public function deleteNews(int $id)
-	{
-		$comments = $this->commentRepository->listComments();
-		$idsToDelete = [];
+    * deletes a news, and also linked comments
+    */
+    public function deleteNews(int $id)
+    {
+        $comments = $this->commentRepository->listComments();
+        $idsToDelete = [];
 
-		foreach ($comments as $comment) {
-			if ($comment->getNewsId() == $id) {
-				$idsToDelete[] = $comment->getId();
-			}
-		}
+        foreach ($comments as $comment) {
+            if ($comment->getNewsId() == $id) {
+                $idsToDelete[] = $comment->getId();
+            }
+        }
 
-		foreach($idsToDelete as $id) {
-			$this->commentRepository->deleteComment($id);
-		}
+        foreach($idsToDelete as $id) {
+            $this->commentRepository->deleteComment($id);
+        }
 
         $news = new News();
         $news->setId($id);
-		return $this->db->delete($news);
-	}
+        return $this->db->delete($news);
+    }
 }

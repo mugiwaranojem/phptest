@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Entity;
@@ -10,7 +11,10 @@ class Comment implements EntityInterface
      * Properties are not being used by outside classes
      * should be define as private by default
      */
-	private $id, $body, $createdAt, $newsId;
+    private $id;
+    private $body;
+    private $createdAt;
+    private $newsId;
 
     public function getTableName(): string
     {
@@ -22,54 +26,54 @@ class Comment implements EntityInterface
      * Setter method should define a type of its property
      * to control the type of parameter being pass
      */
-	public function setId(int $id): self
-	{
-		$this->id = $id;
+    public function setId(int $id): self
+    {
+        $this->id = $id;
 
-		return $this;
-	}
+        return $this;
+    }
 
     /**
      * @Documentation
      * its always good to define return type to getters
      */
-	public function getId(): int
-	{
-		return $this->id;
-	}
-	public function setBody(string $body): self
-	{
-		$this->body = $body;
+    public function getId(): int
+    {
+        return $this->id;
+    }
+    public function setBody(string $body): self
+    {
+        $this->body = $body;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	public function getBody(): string
-	{
-		return $this->body;
-	}
+    public function getBody(): string
+    {
+        return $this->body;
+    }
 
-	public function setCreatedAt(string $createdAt): self
-	{
-		$this->createdAt = $createdAt;
+    public function setCreatedAt(string $createdAt): self
+    {
+        $this->createdAt = $createdAt;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	public function getCreatedAt(): string
-	{
-		return $this->createdAt;
-	}
+    public function getCreatedAt(): string
+    {
+        return $this->createdAt;
+    }
 
-	public function getNewsId(): int
-	{
-		return $this->newsId;
-	}
+    public function getNewsId(): int
+    {
+        return $this->newsId;
+    }
 
-	public function setNewsId(int $newsId): self
-	{
-		$this->newsId = $newsId;
+    public function setNewsId(int $newsId): self
+    {
+        $this->newsId = $newsId;
 
-		return $this;
-	}
+        return $this;
+    }
 }

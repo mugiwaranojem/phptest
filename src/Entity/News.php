@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Entity;
@@ -10,7 +11,10 @@ class News implements EntityInterface
      * Properties are not being used by outside classes
      * should be define as private by default
      */
-	private $id, $title, $body, $createdAt;
+    private $id;
+    private $title;
+    private $body;
+    private $createdAt;
 
     public function getTableName(): string
     {
@@ -22,55 +26,55 @@ class News implements EntityInterface
      * Setter method should define a type of its property
      * to control the type of parameter being pass
      */
-	public function setId(int $id): self
-	{
-		$this->id = $id;
+    public function setId(int $id): self
+    {
+        $this->id = $id;
 
-		return $this;
-	}
+        return $this;
+    }
 
     /**
      * @Documentation
      * its always good to define return type to getters
      */
-	public function getId(): int
-	{
-		return $this->id;
-	}
+    public function getId(): int
+    {
+        return $this->id;
+    }
 
-	public function setTitle(string $title): self
-	{
-		$this->title = $title;
+    public function setTitle(string $title): self
+    {
+        $this->title = $title;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	public function getTitle(): string
-	{
-		return $this->title;
-	}
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
 
-	public function setBody(string $body): self
-	{
-		$this->body = $body;
+    public function setBody(string $body): self
+    {
+        $this->body = $body;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	public function getBody(): string
-	{
-		return $this->body;
-	}
+    public function getBody(): string
+    {
+        return $this->body;
+    }
 
-	public function setCreatedAt(string $createdAt): self
-	{
-		$this->createdAt = $createdAt;
+    public function setCreatedAt(string $createdAt): self
+    {
+        $this->createdAt = $createdAt;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	public function getCreatedAt(): string
-	{
-		return $this->createdAt;
-	}
+    public function getCreatedAt(): string
+    {
+        return $this->createdAt;
+    }
 }
